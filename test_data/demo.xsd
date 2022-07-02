@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<!-- Generelle typer -->
+	<xs:simpleType name="HandlingSimpleFeltertype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Rediger"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="HandlingListeFeltertype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Opret"/>
+			<xs:enumeration value="Rediger"/>
+			<xs:enumeration value="Slet"/>
+			<xs:enumeration value="Tilvælg"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AvanceretHandlingtype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SletForNedarvning"/>
+			<xs:enumeration value="Forsegl"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GlobalIdtype">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{10}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VariantIdtype">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{10}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Aftaletype">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{8}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Tekst3type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Tekst4type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Tekst8type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Tekst20type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Tekst100type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Tekst555type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="555"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Tilbagekøbtype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IngenKrav"/>
+			<xs:enumeration value="Fuldt"/>
+			<xs:enumeration value="EfterAftaleMedArbejdsgiver"/>
+			<xs:enumeration value="BosætterSigIUdlandet"/>
+			<xs:enumeration value="IngenMulighedForTilbagekøb"/>
+			<xs:enumeration value="BagateludbetalingMuligEfterTolvMåneder"/>
+			<xs:enumeration value="BosætterSigIUdlandetEfterTolvMånederSamtTilladelse"/>
+			<xs:enumeration value="TilbagekøbTilladt"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ProcentMin0Dectype">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="0"/>
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Procent2Dectype">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="2"/>
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Dec2type">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="2"/>
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Dec2MedVærditype">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="2"/>
+			<xs:minInclusive value="0.01"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Dec7type">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="7"/>
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Beløb10000000type">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="0"/>
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="10000000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Transaktionstype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Afgiftsberigtigelse"/>
+			<xs:enumeration value="Indtræden"/>
+			<xs:enumeration value="OverførselUdAMPEksternPFA"/>
+			<xs:enumeration value="OverførselUdØvrEksternPFA"/>
+			<xs:enumeration value="OverførselUdAMPInternIJobPFA"/>
+			<xs:enumeration value="OverførselUdØvrInternIJobPFA"/>
+			<xs:enumeration value="OverførselUdAMPInternUJobPFA"/>
+			<xs:enumeration value="OverførselUdØvrInternUJobPFA"/>
+			<xs:enumeration value="TilbagekøbPFA"/>
+			<xs:enumeration value="InvstRestDepot"/>
+			<xs:enumeration value="PersonligRådgivning"/>
+			<xs:enumeration value="SpecialRådgivning"/>
+			<xs:enumeration value="TelefonRådgivning"/>
+			<xs:enumeration value="Udtræden"/>
+			<xs:enumeration value="ÆndrIndProfilPFA"/>
+			<xs:enumeration value="ÆndrIndProfilSelv"/>
+			<xs:enumeration value="ÆndrInvPenAlderPFA"/>
+			<xs:enumeration value="ÆndrInvPenAlderSelv"/>
+			<xs:enumeration value="ÆndrInvProfilSelvvalgPFA"/>
+			<xs:enumeration value="ÆndrInvProfilSelvvalgSelv"/>
+			<xs:enumeration value="ÆndrKKPFA"/>
+			<xs:enumeration value="ÆndrKKSelv"/>
+			<xs:enumeration value="ÆndrKonceptAllPFA"/>
+			<xs:enumeration value="ÆndrKonceptAllSelv"/>
+			<xs:enumeration value="ÆndrOpsFordPFA"/>
+			<xs:enumeration value="ÆndrOpsFordSelv"/>
+			<xs:enumeration value="ÆndrOpsGarantiPFA"/>
+			<xs:enumeration value="ÆndrOpsGarantiSelv"/>
+			<xs:enumeration value="ÆndrOpsProfilPFA"/>
+			<xs:enumeration value="ÆndrOpsProfilSelv"/>
+			<xs:enumeration value="Vederlag"/>
+			<xs:enumeration value="ÆndrDepotsikringPFA"/>
+			<xs:enumeration value="ÆndrDepotsikringSelv"/>
+			<xs:enumeration value="ÆndrPALPFA"/>
+			<xs:enumeration value="ÆndrPALSelv"/>
+			<xs:enumeration value="ÆndrUdbForløbSelv"/>
+			<xs:enumeration value="ÆndrUdbForløbPFA"/>
+			<xs:enumeration value="ÆndrSelvProfilSelv"/>
+			<xs:enumeration value="ÆndrSelvProfilPFA"/>
+			<xs:enumeration value="TilpasUdbetalingsPlanPFA"/>
+			<xs:enumeration value="TilpasUdbetalingsPlanSelv"/>
+			<xs:enumeration value="ÆndreUnderUdbetalingPFA"/>
+			<xs:enumeration value="ÆndreUnderUdbetalingSelv"/>
+			<xs:enumeration value="ÆndrFastlåstYdelse"/>
+			<xs:enumeration value="LøbendeUdbetaling"/>
+			<xs:enumeration value="EngangsUdbetaling"/>
+			<xs:enumeration value="ValgUdbForløbSelv"/>
+			<xs:enumeration value="ValgUdbForløbPFA"/>
+			<xs:enumeration value="Henstandsforlængelse"/>
+			<xs:enumeration value="ÆndrProfilkonceptSelv"/>
+			<xs:enumeration value="ÆndrProfilkonceptPFA"/>
+			<xs:enumeration value="ÆndrKlimaAndelSelv"/>
+			<xs:enumeration value="ÆndrKlimaAndelPFA"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Transformationtype">
+		<xs:sequence>
+			<xs:element name="Generelt" type="Generelttype" minOccurs="0"/>
+			<xs:element name="Administration" type="Administrationtype" minOccurs="0"/>
+			<xs:element name="Indbetaling" type="Indbetalingtype" minOccurs="0"/>
+			<xs:element name="ServiceOgRådgivning" type="ServiceOgRådgivningtype" minOccurs="0"/>
+			<xs:element name="ForsikringOgPension" type="ForsikringOgPensiontype" minOccurs="0"/>
+			<xs:element name="Dækninger" type="Dækningertype" minOccurs="0"/>
+			<xs:element name="Opsparing" type="Opsparingtype" minOccurs="0"/>
+			<xs:element name="GodtgørelseOgTilskud" type="GodtgørelseOgTilskudtype" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="Skattekodertype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Skattekode1"/>
+			<xs:enumeration value="Skattekode2"/>
+			<xs:enumeration value="Skattekode3"/>
+			<xs:enumeration value="Skattekode5"/>
+			<xs:enumeration value="Skattekode7"/>
+			<xs:enumeration value="Skattekode9"/>
+			<xs:enumeration value="Skattekode33"/>
+			<xs:enumeration value="Skattefri"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Indbetalingskildetype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ArbejdsgiverObligatorisk"/>
+			<xs:enumeration value="MedarbejderObligatorisk"/>
+			<xs:enumeration value="MedarbejderFrivillig"/>
+			<xs:enumeration value="Blandet"/>
+			<xs:enumeration value="PrivatIndbetaling"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Koncepttype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IkkeAngivet"/>
+			<xs:enumeration value="ProfilstyretKoncept"/>
+			<xs:enumeration value="Selvvalgskoncept"/>
+			<xs:enumeration value="Kundekapital"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="JaNejBlanktype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Ja"/>
+			<xs:enumeration value="Nej"/>
+			<xs:enumeration value="Blank"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- GenereltFaneblad -->
+	<xs:complexType name="GlobalIdComplextype">
+		<xs:simpleContent>
+			<xs:extension base="GlobalIdtype">
+				<xs:attribute name="Handling" type="HandlingSimpleFeltertype" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="Tekst4Complextype">
+		<xs:simpleContent>
+			<xs:extension base="Tekst4type">
+				<xs:attribute name="Handling" type="HandlingSimpleFeltertype" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="DatoComplextype">
+		<xs:simpleContent>
+			<xs:extension base="xs:date">
+				<xs:attribute name="Handling" type="HandlingSimpleFeltertype" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="Tekst100Complextype">
+		<xs:simpleContent>
+			<xs:extension base="Tekst100type">
+				<xs:attribute name="Handling" type="HandlingSimpleFeltertype" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="Generelttype">
+		<xs:sequence>
+			<xs:element name="Aftalepart" type="GlobalIdComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="AgenturNr" type="Tekst4Complextype" nillable="true" minOccurs="0"/>
+			<xs:element name="Slutdato" type="DatoComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="Vederlagsaftale" type="Tekst100Complextype" nillable="true" minOccurs="0"/>
+			<xs:element name="Vederlagsaftaledato" type="DatoComplextype" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- AdministrationFaneblad -->
+	<xs:complexType name="Procent2DecComplextype">
+		<xs:simpleContent>
+			<xs:extension base="Procent2Dectype">
+				<xs:attribute name="Handling" type="HandlingSimpleFeltertype" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="TilbagekøbComplextype">
+		<xs:simpleContent>
+			<xs:extension base="Tilbagekøbtype">
+				<xs:attribute name="Handling" type="HandlingSimpleFeltertype" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="Administrationtype">
+		<xs:sequence>
+			<xs:element name="AndelTilTvungenSkattekode" type="Procent2DecComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="NedreGrænseForTvungenSkattekode" type="Procent2DecComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="Tilbagekøb_Arbejdsgiver" type="TilbagekøbComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="TilbagekøbAfMedarbejder" type="TilbagekøbComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="TilbagekøbAfMedarbejder_Frivillig" type="TilbagekøbComplextype" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- IndbetalingFaneblad -->
+	<xs:complexType name="Beløb10000000Complextype">
+		<xs:simpleContent>
+			<xs:extension base="Beløb10000000type">
+				<xs:attribute name="Handling" type="HandlingSimpleFeltertype" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="Indbetalingtype">
+		<xs:sequence>
+			<xs:element name="MaxArbejdsgiver_Beløb" type="Beløb10000000Complextype" nillable="true" minOccurs="0"/>
+			<xs:element name="MaxArbejdsgiver_Procent" type="Procent2DecComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="MaxArbejdstager_Beløb" type="Beløb10000000Complextype" nillable="true" minOccurs="0"/>
+			<xs:element name="MaxArbejdstager_Procent" type="Procent2DecComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="MaxArbejdstagerFrivillig_Beløb" type="Beløb10000000Complextype" nillable="true" minOccurs="0"/>
+			<xs:element name="MaxArbejdstagerFrivillig_Procent" type="Procent2DecComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="MinArbejdsgiver_Beløb" type="Beløb10000000Complextype" nillable="true" minOccurs="0"/>
+			<xs:element name="MinArbejdsgiver_Procent" type="Procent2DecComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="MinArbejdstager_Beløb" type="Beløb10000000Complextype" nillable="true" minOccurs="0"/>
+			<xs:element name="MinArbejdstager_Procent" type="Procent2DecComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="MinArbejdstagerFrivillig_Beløb" type="Beløb10000000Complextype" nillable="true" minOccurs="0"/>
+			<xs:element name="MinArbejdstagerFrivillig_Procent" type="Procent2DecComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="StandardArbejdsgiver_Beløb" type="Beløb10000000Complextype" nillable="true" minOccurs="0"/>
+			<xs:element name="StandardArbejdsgiver_Procent" type="Procent2DecComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="StandardArbejdstager_Beløb" type="Beløb10000000Complextype" nillable="true" minOccurs="0"/>
+			<xs:element name="StandardArbejdstager_Procent" type="Procent2DecComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="StandardArbejdstagerFrivillig_Beløb" type="Beløb10000000Complextype" nillable="true" minOccurs="0"/>
+			<xs:element name="StandardArbejdstagerFrivillig_Procent" type="Procent2DecComplextype" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ServiceOgRaadgivningFaneblad -->
+	<xs:complexType name="Procent7DecComplextype">
+		<xs:simpleContent>
+			<xs:extension base="Dec7type">
+				<xs:attribute name="Handling" type="HandlingSimpleFeltertype" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Liste Tilvalgspakker-->
+	<xs:complexType name="TilvalgspakkerDatatype">
+		<xs:sequence>
+			<xs:element name="Tilvalgspakke" type="Tekst20type"/>
+			<xs:element name="Opstartstillæg" type="Tekst20type" minOccurs="0"/>
+			<xs:element name="TilvalgspakkePrisfaktor" type="Dec7type" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Handling" type="HandlingListeFeltertype" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="TilvalgspakkerListetype">
+		<xs:sequence>
+			<xs:element name="TilvalgspakkerData" type="TilvalgspakkerDatatype" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--Liste Transaktionstyper-->
+	<xs:complexType name="TransaktionstyperDatatype">
+		<xs:sequence>
+			<xs:element name="Transaktionstype" type="Transaktionstype"/>
+			<xs:element name="TransaktionsgebyrPrisfaktor" type="Dec7type" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Handling" type="HandlingListeFeltertype" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="TransaktionstyperListetype">
+		<xs:sequence>
+			<xs:element name="TransaktionstyperData" type="TransaktionstyperDatatype" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ServiceOgRådgivningtype">
+		<xs:sequence>
+			<xs:element name="ForsikringsadministrationPrisfastholdelseSlutdato" type="DatoComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="GrundpakkePrisfaktor" type="Procent7DecComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="ServicepakkePrisfastholdelseSlutdato" type="DatoComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="Tilvalgspakker" type="TilvalgspakkerListetype" minOccurs="0"/>
+			<xs:element name="TransaktionstypePrisfastholdelseSlutdato" type="DatoComplextype" nillable="true" minOccurs="0"/>
+			<xs:element name="Transaktionstyper" type="TransaktionstyperListetype" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ForsikringOgPensiontypeFaneblad -->
+	<!--Liste EksternLeverandørListe-->
+	<xs:complexType name="EksternLeverandørDatatype">
+		<xs:sequence>
+			<xs:element name="LeverandørDeteljer" type="Tekst555type"/>
+		</xs:sequence>
+		<xs:attribute name="Handling" type="HandlingListeFeltertype" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="EksternLeverandørerListetype">
+		<xs:sequence>
+			<xs:element name="EksternLeverandørData" type="EksternLeverandørDatatype" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ForsikringOgPensiontype">
+		<xs:sequence>
+			<xs:element name="EksternLeverandørListe" type="EksternLeverandørerListetype" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- DækningerFaneblad -->
+	<xs:complexType name="Skattekode_DækningDatatype">
+		<xs:sequence>
+			<xs:element name="Skattekode_DækningNøgle" type="Skattekodertype"/>
+		</xs:sequence>
+		<xs:attribute name="Handling" type="HandlingListeFeltertype" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Skattekode_DækningListetype">
+		<xs:sequence>
+			<xs:element name="Skattekode_DækningData" type="Skattekode_DækningDatatype" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AftaleDækningDatatype">
+		<xs:sequence>
+			<xs:element name="Dækning" type="Tekst3type"/>
+			<xs:element name="DækningsintervalProcentMin" type="ProcentMin0Dectype" minOccurs="0" nillable="true"/>
+			<xs:element name="DækningsintervalProcentMax" type="ProcentMin0Dectype" minOccurs="0" nillable="true"/>
+			<xs:element name="ErDækningenObligatorisk" type="JaNejBlanktype" minOccurs="0"/>
+			<xs:element name="MaxDækningIKroner" type="Dec2MedVærditype" minOccurs="0" nillable="true"/>
+			<xs:element name="MinDækningIKroner" type="Dec2type" minOccurs="0" nillable="true"/>
+			<xs:element name="ReferenceTilForsikringspris" type="Tekst8type" minOccurs="0"/>
+			<xs:element name="Skattekode" type="Skattekode_DækningListetype" minOccurs="0"/>
+			<xs:element name="Standarddækning_Kroner" type="Dec2type" minOccurs="0" nillable="true"/>
+			<xs:element name="Standarddækning_Procent" type="Dec2type" minOccurs="0" nillable="true"/>
+			<xs:element name="VariantId" type="VariantIdtype" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Handling" type="HandlingListeFeltertype" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="AftaleDækningsListetype">
+		<xs:sequence>
+			<xs:element name="AftaleDækningData" type="AftaleDækningDatatype" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>	
+	<xs:complexType name="Dækningertype">
+		<xs:sequence>
+			<xs:element name="Dækninger" type="AftaleDækningsListetype" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- OpsparingFaneblad -->
+	<!--Liste IkkeTilladteUdbetalingsskattekoder-->
+	<xs:complexType name="IkkeTilladteUdbetalingsskattekodeDatatype">
+		<xs:sequence>
+			<xs:element name="Skattekode" type="Skattekodertype"/>
+		</xs:sequence>
+		<xs:attribute name="Handling" type="HandlingListeFeltertype" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="IkkeTilladteUdbetalingsskattekoderListetype">
+		<xs:sequence>
+			<xs:element name="IkkeTilladteUdbetalingsskattekodeData" type="IkkeTilladteUdbetalingsskattekodeDatatype" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--Liste IndbetalingsOgInvesteringsprofiler-->
+	<xs:complexType name="IndbetalingsfordelingDatatype">
+		<xs:sequence>
+			<xs:element name="KonceptType" type="Koncepttype"/>
+			<xs:element name="KonceptId" type="Tekst3type"/>
+			<xs:element name="StandardInvesteringsandel" type="Procent2Dectype" minOccurs="0"/>
+			<xs:element name="MinimumInvesteringsandel" type="Procent2Dectype" minOccurs="0"/>
+			<xs:element name="MaksimumInvesteringsandel" type="Procent2Dectype" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Handling" type="HandlingListeFeltertype" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="IndbetalingsfordelingListetype">
+		<xs:sequence>
+			<xs:element name="IndbetalingsfordelingData" type="IndbetalingsfordelingDatatype" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IndbetalingsOgInvesteringsprofilDatatype">
+		<xs:sequence>
+			<xs:element name="Indbetalingskilde" type="Indbetalingskildetype"/>
+			<xs:element name="Indbetalingsfordeling" type="IndbetalingsfordelingListetype" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Handling" type="HandlingListeFeltertype" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="IndbetalingsOgInvesteringsprofilListetype">
+		<xs:sequence>
+			<xs:element name="IndbetalingsOgInvesteringsprofilData" type="IndbetalingsOgInvesteringsprofilDatatype" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--Liste TilladteProfilstyredeKoncepter-->
+	<xs:complexType name="OpsparingsprofilDatatype">
+		<xs:sequence>
+			<xs:element name="OpsparingsprofilId" type="Tekst3type"/>
+			<xs:element name="OpsparingsprofilStandard" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Handling" type="HandlingListeFeltertype" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="OpsparingsprofilListetype">
+		<xs:sequence>
+			<xs:element name="OpsparingsprofilData" type="OpsparingsprofilDatatype" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RabatIndirekteFondsomkostningerDatatype">
+		<xs:sequence>
+			<xs:element name="Fondskode" type="Tekst4type"/>
+			<xs:element name="Trin" type="xs:integer"/>
+			<xs:element name="RabatIndirekteFondsomkostninger" type="Procent2Dectype" minOccurs="0"/>
+			<xs:element name="RabatIndirekteFondsomkostningerBasispoint" type="Procent2Dectype" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Handling" type="HandlingListeFeltertype" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="RabatIndirekteFondsomkostningerListetype">
+		<xs:sequence>
+			<xs:element name="RabatIndirekteFondsomkostningerData" type="RabatIndirekteFondsomkostningerDatatype" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProfilstyretKonceptDatatype">
+		<xs:sequence>
+			<xs:element name="KonceptId" type="Tekst3type"/>
+			<xs:element name="Opsparingsprofiler" type="OpsparingsprofilListetype" minOccurs="0"/>
+			<xs:element name="RabatIndirekteFondsomkostninger" type="RabatIndirekteFondsomkostningerListetype" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Handling" type="HandlingListeFeltertype" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ProfilstyretKonceptListetype">
+		<xs:sequence>
+			<xs:element name="ProfilstyretKonceptData" type="ProfilstyretKonceptDatatype" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Opsparingtype">
+		<xs:sequence>
+			<xs:element name="IkkeTilladteUdbetalingsskattekoder" type="IkkeTilladteUdbetalingsskattekoderListetype" minOccurs="0"/>
+			<xs:element name="IndbetalingsOgInvesteringsprofiler" type="IndbetalingsOgInvesteringsprofilListetype" minOccurs="0"/>
+			<xs:element name="TilladteProfilstyredeKoncepter" type="ProfilstyretKonceptListetype" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- GodtgørelseOgTilskudFaneblad -->
+	<xs:complexType name="GodtgørelseOgTilskudtype"/>
+	<xs:complexType name="MasseopdateringAfAftalertype">
+		<xs:sequence>
+			<xs:element name="Aftaler">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Aftale" type="Aftaletype" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Transformation" type="Transformationtype"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MasseopdateringAfAftaler" type="MasseopdateringAfAftalertype"/>
+</xs:schema>
