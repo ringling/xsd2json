@@ -8,7 +8,7 @@ Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
 ```
  docker build -t ringling/xsd2json-app .
- docker run -p 8080:3000 -d
+ docker run -p 8080:3000 -d ringling/xsd2json-app
 ```
 ```
  docker push ringling/xsd2json-app
@@ -62,6 +62,7 @@ Build the application for production:
 
 ```bash
 npm run build
+node .output/server/index.mjs 
 ```
 
 Locally preview production build:

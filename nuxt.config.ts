@@ -1,7 +1,9 @@
 import { defineNuxtConfig } from 'nuxt'
 
 
+//import 'vue-highlight-code/dist/style.css';
 export default defineNuxtConfig({
+
   modules: [],
   css: [
     'vuetify/lib/styles/main.sass',
