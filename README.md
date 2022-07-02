@@ -1,6 +1,37 @@
 # Nuxt 3 Minimal Starter
 
+
+
 Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+
+## DRAFT
+
+```
+ docker build -t ringling/xsd2json-app .
+ docker run -p 8080:3000 -d
+```
+```
+ docker push ringling/xsd2json-app
+```
+
+
+OLD STUFF
+```
+cd xsd2json/schemas
+docker run -it -v "$(pwd):/root/schemas" ringling/xsd2json
+cd ~/schemas
+xsd2json demo.xsd > demo.json
+```
+
+
+## Pre-setup
+
+
+### Install prolog and xsd2json
+```
+apt install -y swi-prolog
+npm install -g xsd2json
+```
 
 ## Setup
 
