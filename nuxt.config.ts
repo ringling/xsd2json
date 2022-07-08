@@ -22,7 +22,7 @@ export default defineNuxtConfig({
 
       ],
 
-      title: "Masseopdatering"
+      title: "Convert XSD to JSON schema"
     }
   }
 
